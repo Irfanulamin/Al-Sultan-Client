@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <>
-      <div className="navbar py-4 md:py-3 lg:py-3 bg-slate-900 px-7 flex gap-y-10 flex-col items-center justify-center md:flex-row lg:flex-row">
+      <div className="navbar py-6  bg-slate-900 px-7 flex gap-y-10 flex-col items-center justify-center md:flex-row lg:flex-row">
         <div className="navbar-start">
           <div className="flex  items-center justify-center  gap-x-6">
             <Link
@@ -38,7 +40,7 @@ const Header = () => {
               </Link>
             </div>
             <div>
-              <p className=" text-white ">
+              <p className=" text-white text-center">
                 <small>
                   Explore the rich flavors of Arabic cuisine one dish at a time!
                 </small>
@@ -47,22 +49,36 @@ const Header = () => {
           </div>
         </div>
         <div className="navbar-end flex flex-col md:flex-row lg:flex-row gap-y-2">
-          <div className="avatar">
-            <div className="w-7 rounded-full ring  ring-amber-600 ring-offset-base-100 ring-offset-2">
-              <img src="" />
+          {user && (
+            <div className="avatar">
+              <div className="w-7 rounded-full ring  ring-amber-600 ring-offset-base-100 ring-offset-2">
+                <img src="" />
+              </div>
             </div>
-          </div>
+          )}
           <div className="flex">
-            <button className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent">
-              Login
-            </button>
-            <button className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent">
-              Register
-            </button>
+            {!user && (
+              <Link
+                to="/login"
+                className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent"
+              >
+                Login
+              </Link>
+            )}
+            {!user && (
+              <Link
+                to="/register"
+                className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent"
+              >
+                Register
+              </Link>
+            )}
             {/* Username on hover of pfp */}
-            <button className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent">
-              LogOut
-            </button>
+            {user && (
+              <button className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent">
+                LogOut
+              </button>
+            )}
           </div>
         </div>
       </div>

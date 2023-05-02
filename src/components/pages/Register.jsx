@@ -23,7 +23,7 @@ const Register = () => {
       setError("The password is less than 6 characters");
       return;
     }
-    signUp(email, password, displayName)
+    signUp(email, password)
       .then((res) => {
         const user = res.user;
         console.log(user);

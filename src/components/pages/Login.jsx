@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState("");
+  const { signIn } = useContext(AuthContext);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form?.email?.value;
+    const password = form?.password?.value;
+
+    setError("");
+    if (email.length == 0 || password.length == 0) {
+      setError("A user cannot submit empty email or password field");
+      return;
+    } else if (password.length < 6) {
+      setError("The password is less than 6 characters");
+      return;
+    }
+    signIn(email, password)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((err) => setError(err.message));
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex flex-col gap-x-24 justify-center items-center lg:flex-row-reverse">
@@ -19,7 +45,7 @@ const Login = () => {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
+          <form onSubmit={handleLogin} className="card-body">
             <div>
               <UserCircleIcon className="h-24 w-24 m-auto "></UserCircleIcon>
             </div>
@@ -30,6 +56,8 @@ const Login = () => {
               </label>
               <input
                 type="text"
+                id="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
               />
@@ -39,9 +67,11 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 placeholder="password"
                 className="input input-bordered"
+                name="password"
+                id="password"
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
@@ -52,12 +82,18 @@ const Login = () => {
                 </a>
               </label>
             </div>
-            <div className="form-control mt-6">
-              <button className="btn  hover:bg-amber-600 bg-slate-950 border-0">
+            {error && (
+              <p className="text-red-600 font-medium text-base">{error}</p>
+            )}
+            <div className="form-control mt-3">
+              <button
+                type="submit"
+                className="btn  hover:bg-amber-600 bg-slate-950 border-0"
+              >
                 Login
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

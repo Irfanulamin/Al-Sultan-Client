@@ -3,7 +3,17 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((err) => err.message);
+  };
+
   return (
     <>
       <div className="navbar py-6  bg-slate-900 px-7 flex gap-y-10 flex-col items-center justify-center md:flex-row lg:flex-row">
@@ -75,7 +85,10 @@ const Header = () => {
             )}
             {/* Username on hover of pfp */}
             {user && (
-              <button className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent">
+              <button
+                onClick={handleLogOut}
+                className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent"
+              >
                 LogOut
               </button>
             )}

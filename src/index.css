@@ -9,3 +9,7 @@
 .primary_text {
   font-family: "Poppins", sans-serif;
 }
+
+.page_screen {
+  min-height: 90vh;
+}

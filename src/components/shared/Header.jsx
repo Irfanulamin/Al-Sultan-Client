@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [hovered, setHovered] = useState(false);
+  console.log(user);
 
   const handleLogOut = () => {
     logOut()
@@ -12,6 +14,14 @@ const Header = () => {
         console.log(user);
       })
       .catch((err) => err.message);
+  };
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
   };
 
   return (
@@ -58,41 +68,61 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="navbar-end flex flex-col md:flex-row lg:flex-row gap-y-2">
-          {user && (
+        <div className="navbar-end flex flex-col items-center md:flex-row lg:flex-row gap-y-2">
+          {user?.photoURL && (
             <div className="avatar">
-              <div className="w-7 rounded-full ring  ring-amber-600 ring-offset-base-100 ring-offset-2">
-                <img src="" />
+              <div
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="w-7 mr-2 rounded-full ring  ring-amber-600 ring-offset-base-100 ring-offset-2"
+              >
+                <img src={user.photoURL} />
               </div>
             </div>
           )}
-          <div className="flex">
-            {!user && (
+          {hovered && (
+            <div>
+              <p
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="text-sm font-medium tracking-wider primary_text text-white"
+              >
+                {user.displayName}
+              </p>
+            </div>
+          )}
+
+          {!user && (
+            <div>
               <Link
                 to="/login"
                 className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent"
               >
                 Login
               </Link>
-            )}
-            {!user && (
+            </div>
+          )}
+          {!user && (
+            <div>
               <Link
                 to="/register"
                 className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent"
               >
                 Register
               </Link>
-            )}
-            {/* Username on hover of pfp */}
-            {user && (
-              <button
+            </div>
+          )}
+          {user && (
+            <div>
+              <Link
                 onClick={handleLogOut}
+                to="/login"
                 className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent"
               >
                 LogOut
-              </button>
-            )}
-          </div>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </>

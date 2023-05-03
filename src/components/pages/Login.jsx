@@ -59,7 +59,7 @@ const Login = () => {
     <div className="hero page_screen bg-base-200 ">
       <div className="hero-content flex flex-col gap-x-24 justify-center items-center lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-6xl font-bold text-slate-950 underline">
+          <h1 className="text-6xl font-bold text-slate-950 underline decoration-amber-600">
             Login now!
           </h1>
           <p className="py-6 font-medium text-lg">

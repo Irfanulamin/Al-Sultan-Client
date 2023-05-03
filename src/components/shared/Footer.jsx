@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <footer className="footer p-10 bg-base-200 text-base-content">
+      <footer className="footer p-10 bg-base-200 ">
         <div>
           <span className="font-semibold text-xl  text-amber-600">
             Services
@@ -28,7 +28,7 @@ const Footer = () => {
           <span className="font-semibold text-xl  text-amber-600">
             Newsletter
           </span>
-          <div className="form-control w-80">
+          <div className="form-control w-36 md:w-80 lg:w-80">
             <label className="label">
               <span className="label-text font-mediu primary_text">
                 Enter your email address!
@@ -37,7 +37,7 @@ const Footer = () => {
             <div className="relative">
               <input
                 type="text"
-                className="input input-bordered w-full pr-16"
+                className="input input-bordered w-10/12 pr-16"
               />
               <button className="btn absolute top-0 right-0 rounded-l-none primary_text font-normal">
                 Subscribe

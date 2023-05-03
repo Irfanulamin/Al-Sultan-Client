@@ -1,5 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import RecipeCard from "./RecipeCard";
+import { MdRestaurant } from "react-icons/md";
 
 const ChefRecipes = () => {
   const chefRecipesData = useLoaderData();
@@ -12,6 +14,7 @@ const ChefRecipes = () => {
     nationality,
     numRecipes,
     likes,
+    recipes,
   } = chefRecipesData;
   console.log(chefRecipesData);
 
@@ -22,9 +25,12 @@ const ChefRecipes = () => {
           <img src={picture} className="w-72 h-72 object-cover" />
         </div>
         <div className="col-start-1 md:col-start-2 lg:col-start-2 col-end-2 md:col-end-3 lg:col-end-4">
-          <h2 className="text-4xl primary_text font-semibold underline underline-offset-4 ">
-            {name}
-          </h2>
+          <div className="flex">
+            <h2 className="text-4xl primary_text font-semibold underline underline-offset-4 ">
+              {name}
+            </h2>
+            <MdRestaurant className="h-6 w-6 text-white" />
+          </div>
           <p className="my-7 primary_text text-white font-normal text-sm ">
             {bio}
           </p>
@@ -53,6 +59,16 @@ const ChefRecipes = () => {
             <span className="text-sm text-white tracking-widest">{likes}+</span>
           </p>
         </div>
+      </div>
+      <div>
+        <h2 className="text-center mt-10 text-5xl font-bold primary_text underline underline-offset-8 decoration-amber-600">
+          Recipes of {name}
+        </h2>
+      </div>
+      <div className="p-12 grid grid-cols-1 lg:grid-cols-2 gap-24 w-full ">
+        {recipes.map((recipe, index) => (
+          <RecipeCard recipe={recipe} key={index}></RecipeCard>
+        ))}
       </div>
     </div>
   );

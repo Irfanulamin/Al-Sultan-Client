@@ -113,9 +113,8 @@ const Header = () => {
             </div>
           )}
           {user && (
-            <div>
+            <div onClick={handleLogOut}>
               <Link
-                onClick={handleLogOut}
                 to="/login"
                 className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent"
               >

@@ -1,7 +1,8 @@
 import React from "react";
 
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ recipe, addToFavourite }) => {
   const { name, ingredients, rating, cooking_method } = recipe;
+
   return (
     <>
       <div className="rounded-sm border border-slate-950">
@@ -19,7 +20,6 @@ const RecipeCard = ({ recipe }) => {
             </p>
           ))}
           <p className="primary_text  font-bold text-base">
-            {" "}
             <span className=" text-amber-600">Cooking Method</span>
             <span> : {cooking_method}</span>
           </p>
@@ -28,7 +28,10 @@ const RecipeCard = ({ recipe }) => {
             <span className="text-rose-600"> {rating}</span>
           </p>
           <div className="card-actions mt-4 justify-end">
-            <button className="btn btn-xs rounded-sm  primary_text border-none  bg-rose-600 hover:bg-rose-500">
+            <button
+              onClick={addToFavourite}
+              className="btn btn-xs rounded-sm  primary_text border-none  bg-rose-600 hover:bg-rose-500"
+            >
               Add to favourite
             </button>
           </div>

@@ -8,11 +8,13 @@ import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import AuthProvider from "./provider/AuthProvider";
 import ChefRecipes from "./components/pages/ChefRecipes";
+import ErrorPage from "./components/pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Header = () => {
@@ -29,12 +29,14 @@ const Header = () => {
       <div className="navbar py-6  bg-slate-900 px-7 flex gap-y-10 flex-col items-center justify-center md:flex-row lg:flex-row">
         <div className="navbar-start">
           <div className="flex  items-center justify-center  gap-x-6">
-            <Link
-              className="uppercase text-xs font-normal primary_text tracking-wide text-white"
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-amber-600" : "text-white"
+              }
               to="/"
             >
               Home
-            </Link>
+            </NavLink>
             <Link
               className="uppercase text-xs font-normal primary_text tracking-wide text-white"
               to="/about"

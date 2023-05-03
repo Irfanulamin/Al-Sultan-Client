@@ -2,11 +2,12 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
 import { MdRestaurant } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ChefRecipes = () => {
   const chefRecipesData = useLoaderData();
   const {
-    id,
     picture,
     name,
     bio,
@@ -16,7 +17,10 @@ const ChefRecipes = () => {
     likes,
     recipes,
   } = chefRecipesData;
-  console.log(chefRecipesData);
+
+  const addToFavourite = () => {
+    toast("Item has been added 😋");
+  };
 
   return (
     <div>
@@ -67,9 +71,14 @@ const ChefRecipes = () => {
       </div>
       <div className="p-12 grid grid-cols-1 lg:grid-cols-2 gap-24 w-full ">
         {recipes.map((recipe, index) => (
-          <RecipeCard recipe={recipe} key={index}></RecipeCard>
+          <RecipeCard
+            recipe={recipe}
+            key={index}
+            addToFavourite={addToFavourite}
+          ></RecipeCard>
         ))}
       </div>
+      <ToastContainer />
     </div>
   );
 };

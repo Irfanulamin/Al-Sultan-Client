@@ -22,7 +22,7 @@ const ChefCard = ({ chefData }) => {
           />
         </div>
         <div className="p-5">
-          <h2 className="text-2xl primary_text font-semibold underline underline-offset-4 decoration-amber-600">
+          <h2 className="text-2xl mb-3 primary_text font-semibold underline underline-offset-4 decoration-amber-600">
             {name}
           </h2>
           <p className="font-semibold primary_text text-black">

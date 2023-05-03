@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -9,8 +9,9 @@ const Login = () => {
   const [error, setError] = useState("");
   const { signIn, signInWithGoogle, signInWithGithub } =
     useContext(AuthContext);
-
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -40,7 +41,7 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((err) => setError(err.message));
   };
@@ -50,7 +51,7 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((err) => setError(err.message));
   };
@@ -100,12 +101,12 @@ const Login = () => {
                 id="password"
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  New to the Website ?{" "}
+                <div className="label-text-alt link link-hover">
+                  <span>New to the Website ? </span>
                   <span>
                     <Link to="/register">Register now!</Link>
                   </span>
-                </a>
+                </div>
               </label>
             </div>
             {error && (
@@ -114,15 +115,15 @@ const Login = () => {
             <div className="form-control mt-3">
               <button
                 type="submit"
-                className="btn  hover:bg-amber-600 bg-slate-950 border-0"
+                className="btn btn-sm  hover:bg-amber-600 bg-slate-950 border-0"
               >
                 Login
               </button>
             </div>
           </form>
-          <div className="form-control mt-3">
+          <div className="form-control">
             <div
-              className="flex justify-center items-center btn btn-outline gap-x-2 hover:border-none text-black hover:text-black border-blue-600 hover:bg-amber-500"
+              className="flex justify-center items-center btn btn-sm  btn-outline gap-x-2 hover:border-none text-black hover:text-black border-blue-600 hover:bg-amber-500"
               onClick={handleGoogleSignIn}
             >
               <div>
@@ -133,9 +134,9 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <div className="form-control mt-3">
+          <div className="form-control">
             <div
-              className="flex justify-center items-center btn btn-outline gap-x-2 hover:border-none text-black hover:text-black border-black hover:bg-amber-500"
+              className="flex justify-center items-center btn btn-sm btn-outline gap-x-2 hover:border-none text-black hover:text-black border-black hover:bg-amber-500"
               onClick={handleGitHubSignIn}
             >
               <div>

@@ -127,7 +127,7 @@ const Register = () => {
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
-                  Already have an accout?{" "}
+                  <span>Already have an accout? </span>
                   <span>
                     <Link to="/login">Login Now!</Link>
                   </span>
@@ -137,18 +137,18 @@ const Register = () => {
             {error && (
               <p className="text-red-600 font-medium text-base">{error}</p>
             )}
-            <div className="form-control mt-3">
+            <div className="form-control mt-1">
               <button
                 type="submit"
-                className="btn  hover:bg-amber-600 bg-slate-950 border-0"
+                className="btn btn-sm  hover:bg-amber-600 bg-slate-950 border-0"
               >
                 Register
               </button>
             </div>
           </form>
-          <div className="form-control mt-3">
+          <div className="form-control ">
             <div
-              className="flex justify-center items-center btn btn-outline gap-x-2 hover:border-none text-black hover:text-black border-blue-600 hover:bg-amber-500"
+              className="flex justify-center items-center btn btn-sm btn-outline gap-x-2 hover:border-none text-black hover:text-black border-blue-600 hover:bg-amber-500"
               onClick={handleGoogleSignIn}
             >
               <div>
@@ -159,9 +159,9 @@ const Register = () => {
               </div>
             </div>
           </div>
-          <div className="form-control mt-3">
+          <div className="form-control ">
             <div
-              className="flex justify-center items-center btn btn-outline gap-x-2 hover:border-none text-black hover:text-black border-black hover:bg-amber-500"
+              className="flex justify-center items-center btn btn-sm btn-outline gap-x-2 hover:border-none text-black hover:text-black border-black hover:bg-amber-500"
               onClick={handleGitHubSignIn}
             >
               <div>

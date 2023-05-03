@@ -1,5 +1,11 @@
 @tailwind base;
 @tailwind components;
+.is_active {
+  @apply uppercase text-xs font-bold primary_text tracking-wide text-amber-600;
+}
+.not_active {
+  @apply uppercase text-xs font-bold primary_text tracking-wide text-white;
+}
 @tailwind utilities;
 
 .logo_font {
@@ -12,12 +18,4 @@
 
 .page_screen {
   min-height: 90vh;
-}
-
-.is_active {
-  @apply uppercase text-xs font-normal primary_text tracking-wide text-amber-600;
-}
-
-.not_active {
-  @apply uppercase text-xs font-normal primary_text tracking-wide text-white;
 }

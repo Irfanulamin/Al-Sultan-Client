@@ -5,7 +5,6 @@ import { AuthContext } from "../../provider/AuthProvider";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [hovered, setHovered] = useState(false);
-  console.log(user);
 
   const handleLogOut = () => {
     logOut()
@@ -26,29 +25,33 @@ const Header = () => {
 
   return (
     <>
-      <div className="navbar py-6  bg-slate-900 px-7 flex gap-y-10 flex-col items-center justify-center md:flex-row lg:flex-row">
+      <div className="navbar py-6  bg-slate-900 px-7 flex gap-y-10 flex-col items-center justify-center md:flex-row lg:flex-row ">
         <div className="navbar-start">
           <div className="flex  items-center justify-center  gap-x-6">
             <NavLink
               className={({ isActive }) =>
-                isActive ? "text-amber-600" : "text-white"
+                isActive ? "is_active" : "not_active"
               }
               to="/"
             >
               Home
             </NavLink>
-            <Link
-              className="uppercase text-xs font-normal primary_text tracking-wide text-white"
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "is_active" : "not_active"
+              }
               to="/about"
             >
               About
-            </Link>
-            <Link
-              className="uppercase text-xs font-normal primary_text  tracking-wide text-white"
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "is_active" : "not_active"
+              }
               to="/blogs"
             >
               Blogs
-            </Link>
+            </NavLink>
           </div>
         </div>
         <div className="navbar-center">
@@ -95,33 +98,37 @@ const Header = () => {
           )}
 
           {!user && (
-            <div>
-              <Link
+            <div className="mr-2">
+              <NavLink
                 to="/login"
-                className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent"
+                className={({ isActive }) =>
+                  isActive ? "is_active" : "not_active"
+                }
               >
                 Login
-              </Link>
+              </NavLink>
             </div>
           )}
           {!user && (
             <div>
-              <Link
+              <NavLink
                 to="/register"
-                className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent"
+                className={({ isActive }) =>
+                  isActive ? "is_active" : "not_active"
+                }
               >
                 Register
-              </Link>
+              </NavLink>
             </div>
           )}
           {user && (
             <div onClick={handleLogOut}>
-              <Link
+              <button
                 to="/login"
                 className="primary_text btn btn-ghost btn-xs text-amber-600 hover:bg-transparent"
               >
                 LogOut
-              </Link>
+              </button>
             </div>
           )}
         </div>

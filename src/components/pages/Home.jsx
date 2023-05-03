@@ -4,6 +4,18 @@ import ChefsSection from "./ChefsSection";
 
 const Home = () => {
   const [chefsData, setChefsData] = useState([]);
+  const [value, setValue] = useState(20);
+  console.log(chefsData);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setValue((value) => value + 10);
+    }, 100);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:5000/chefs")
@@ -11,12 +23,21 @@ const Home = () => {
       .then((data) => setChefsData(data));
   }, []);
 
-  console.log(chefsData);
-
   return (
     <div>
       <Carousel></Carousel>
-      <ChefsSection chefsData={chefsData}></ChefsSection>
+      {chefsData.length === 0 && (
+        <div className="flex justify-center items-center p-72">
+          <progress
+            id="my-progress"
+            className="radial-progress text-amber-600"
+            style={{ "--value": value }}
+          />
+        </div>
+      )}
+      {chefsData.length !== 0 && (
+        <ChefsSection chefsData={chefsData}></ChefsSection>
+      )}
     </div>
   );
 };

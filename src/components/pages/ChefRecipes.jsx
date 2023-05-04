@@ -4,6 +4,7 @@ import RecipeCard from "./RecipeCard";
 import { MdRestaurant } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LazyLoad from "react-lazy-load";
 
 const ChefRecipes = () => {
   const chefRecipesData = useLoaderData();
@@ -35,7 +36,9 @@ const ChefRecipes = () => {
     <div>
       <div className="w-full gap-12  bg-amber-600 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-24">
         <div className="col-start-1 col-end-2">
-          <img src={picture} className="w-72 h-72 object-cover" />
+          <LazyLoad threshold={0.95}>
+            <img src={picture} className="w-72 h-72 object-cover" />
+          </LazyLoad>
         </div>
         <div className="col-start-1 md:col-start-2 lg:col-start-2 col-end-2 md:col-end-3 lg:col-end-4">
           <div className="flex">

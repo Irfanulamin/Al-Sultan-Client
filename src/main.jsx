@@ -11,7 +11,7 @@ import ChefRecipes from "./components/pages/ChefRecipes";
 import ErrorPage from "./components/pages/ErrorPage";
 import About from "./components/pages/About";
 import PrivateRoute from "./routes/PrivateRoute";
-import Blog from "./components/pages/blogs";
+import Blog from "./components/pages/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +47,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://al-sultans-server.vercel.app/chefs/${params.id}`),
+          fetch(
+            `https://al-sultans-server-irfanulamin.vercel.app/chefs/${params.id}`
+          ),
       },
     ],
   },

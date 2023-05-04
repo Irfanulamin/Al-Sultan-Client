@@ -22,7 +22,7 @@
 
 .banner {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("/public/al-sultans-banner.jpg");
+    url("/al-sultans-banner.jpg");
   background-size: cover;
   background-position: center center;
   height: 90vh;

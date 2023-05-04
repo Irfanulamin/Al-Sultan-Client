@@ -21,7 +21,7 @@ const Register = () => {
 
     setError("");
     if (email.length == 0 || password.length == 0) {
-      setError("A user cannot submit empty email or password field");
+      setError("You cannot submit empty Email or Password field");
       return;
     } else if (password.length < 6) {
       setError("The password is less than 6 characters");

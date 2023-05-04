@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
 const RecipeCard = ({ recipe, addToFavourite }) => {
+  const [add, setAdd] = useState(false);
+
+  function handleBothClicks() {
+    addToFavourite();
+    handleAdded();
+  }
+
+  const handleAdded = () => {
+    setAdd(true);
+  };
   const { name, ingredients, rating, cooking_method } = recipe;
 
   return (
@@ -39,8 +49,10 @@ const RecipeCard = ({ recipe, addToFavourite }) => {
           </p>
           <div className="card-actions mt-4 justify-end">
             <button
-              onClick={addToFavourite}
-              className="btn btn-xs rounded-sm  primary_text border-none  bg-rose-600 hover:bg-rose-500"
+              onClick={handleBothClicks}
+              className={` ${
+                add ? "btn-disabled" : "bg-rose-600 hover:bg-rose-500"
+              } btn btn-xs rounded-sm   primary_text border-none  `}
             >
               Add to favourite
             </button>

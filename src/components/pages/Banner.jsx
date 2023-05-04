@@ -2,10 +2,10 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <section className="banner md:block lg:block hidden">
+    <section className="banner ">
       <div className="w-full h-full flex flex-col justify-center items-center ">
         <div>
-          <p className="text-3xl font-medium text-white primary_text text-center">
+          <p className="text-3xl p-3 font-medium text-white primary_text text-center">
             <span className="text-amber-600 mx-3 text-4xl">"</span>
             The cuisine of the
             <span className="text-amber-600 font-bold"> Middle East</span> is a
@@ -15,7 +15,7 @@ const Banner = () => {
         </div>
         <div>
           <div>
-            <p className="text-white text-lg font-normal mt-1">
+            <p className="text-white p-3 text-lg text-center font-normal mt-1">
               <small>
                 Explore the Middle Eastern recipes with experienced chefs from
                 all over Western Asia region

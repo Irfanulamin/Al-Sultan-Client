@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Carousel from "./Carousel";
 import ChefsSection from "./ChefsSection";
+import Banner from "./Banner";
+import TypesOfChefSection from "./TypesOfChefSection";
 
 const Home = () => {
   const [chefsData, setChefsData] = useState([]);
@@ -18,16 +19,17 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    fetch("https://al-sultans-server-irfanulamin.vercel.app/chefs/")
+    fetch("https://al-sultans-server.vercel.app/chefs")
       .then((res) => res.json())
       .then((data) => setChefsData(data));
   }, []);
 
   return (
     <div>
-      <Carousel></Carousel>
+      <Banner></Banner>
+      <TypesOfChefSection></TypesOfChefSection>
       {chefsData.length === 0 && (
-        <div className="flex justify-center items-center p-72">
+        <div className="flex justify-center items-center w-full h-full my-12 md:my-24 lg:my-24">
           <progress
             id="my-progress"
             className="radial-progress text-amber-600/90"

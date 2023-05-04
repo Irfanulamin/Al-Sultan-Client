@@ -1,4 +1,6 @@
 import React from "react";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const RecipeCard = ({ recipe, addToFavourite }) => {
   const { name, ingredients, rating, cooking_method } = recipe;
@@ -20,12 +22,20 @@ const RecipeCard = ({ recipe, addToFavourite }) => {
             </p>
           ))}
           <p className="primary_text  font-bold text-base">
-            <span className=" text-amber-600">Cooking Method</span>
+            <span className=" text-amber-600 underline decoration-amber-600">
+              Cooking Method
+            </span>
             <span> : {cooking_method}</span>
           </p>
           <p className="primary_text  font-bold text-base">
-            <span className="underline">Ratings</span> :
-            <span className="text-rose-600"> {rating}</span>
+            <span className="underline mb-2">Ratings</span>
+            <span className="text-rose-600">
+              <Rating
+                style={{ maxWidth: 120 }}
+                value={Math.round(rating)}
+                readOnly
+              />
+            </span>
           </p>
           <div className="card-actions mt-4 justify-end">
             <button

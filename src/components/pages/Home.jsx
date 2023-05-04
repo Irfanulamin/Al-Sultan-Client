@@ -18,7 +18,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/chefs")
+    fetch("https://al-sultans-server-irfanulamin.vercel.app/chefs/")
       .then((res) => res.json())
       .then((data) => setChefsData(data));
   }, []);
@@ -30,7 +30,7 @@ const Home = () => {
         <div className="flex justify-center items-center p-72">
           <progress
             id="my-progress"
-            className="radial-progress text-amber-600"
+            className="radial-progress text-amber-600/90"
             style={{ "--value": value }}
           />
         </div>

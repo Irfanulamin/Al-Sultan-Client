@@ -19,7 +19,16 @@ const ChefRecipes = () => {
   } = chefRecipesData;
 
   const addToFavourite = () => {
-    toast("Item has been added 😋");
+    toast.success("Added to Favourite 📝!", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   return (
@@ -78,7 +87,18 @@ const ChefRecipes = () => {
           ></RecipeCard>
         ))}
       </div>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };

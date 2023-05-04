@@ -24,7 +24,7 @@ const PrivateRoute = ({ children }) => {
         <div className="flex justify-center items-center p-72">
           <progress
             id="my-progress"
-            className="radial-progress text-amber-600"
+            className="radial-progress text-amber-600/90"
             style={{ "--value": value }}
           />
         </div>

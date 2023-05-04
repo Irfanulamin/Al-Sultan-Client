@@ -15,7 +15,7 @@ const TypesOfChefSection = () => {
         </p>
       </div>
       <div className=" mt-12 grid w-full gap-7 px-1 md:px-2 lg:px-24 grid-cols-1 md:grid-cols-3 lg:grid-cols-3  place-items-center">
-        <div className="p-7 bg-white border border-black mx-4 shadow-lg">
+        <div className="p-7 bg-white mx-4 shadow-lg">
           <h2 className="text-2xl mb-2 font-semibold primary_text p-2 bg-red-700 border border-red-700 text-white  ">
             Expert
           </h2>
@@ -33,7 +33,7 @@ const TypesOfChefSection = () => {
             . Often explores the cultural origins and history of dishes
           </p>
         </div>
-        <div className="p-7 border bg-white border-black mx-4">
+        <div className="p-7  bg-white mx-4">
           <h2 className="text-2xl mb-2 border-none font-semibold primary_text p-2 bg-yellow-500  border border-yellow-500 text-white   ">
             Intermediate
           </h2>
@@ -50,7 +50,7 @@ const TypesOfChefSection = () => {
             . May feature regional or seasonal ingredients
           </p>
         </div>
-        <div className="p-7 border bg-white border-black mx-4">
+        <div className="p-7  bg-white  mx-4">
           <h2 className="text-2xl mb-2 border-none font-semibold primary_text p-2 bg-green-700 border border-green-700 text-white   ">
             Rookie
           </h2>

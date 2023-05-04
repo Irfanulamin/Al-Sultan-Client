@@ -48,9 +48,9 @@ const Header = () => {
               className={({ isActive }) =>
                 isActive ? "is_active" : "not_active"
               }
-              to="/blogs"
+              to="/blog"
             >
-              Blogs
+              Blog
             </NavLink>
           </div>
         </div>

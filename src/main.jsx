@@ -11,6 +11,7 @@ import ChefRecipes from "./components/pages/ChefRecipes";
 import ErrorPage from "./components/pages/ErrorPage";
 import About from "./components/pages/About";
 import PrivateRoute from "./routes/PrivateRoute";
+import Blog from "./components/pages/blogs";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
         path: "/chefs/:id",

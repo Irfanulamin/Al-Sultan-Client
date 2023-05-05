@@ -47,9 +47,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://al-sultans-server-irfanulamin.vercel.app/chefs/${params.id}`
-          ),
+          fetch(`https://al-sultans-server.vercel.app/chefs/${params.id}`),
       },
     ],
   },

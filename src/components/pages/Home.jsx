@@ -19,7 +19,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    fetch("https://al-sultans-server-irfanulamin.vercel.app/chefs")
+    fetch("https://al-sultans-server.vercel.app/chefs")
       .then((res) => res.json())
       .then((data) => setChefsData(data));
   }, []);
